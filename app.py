@@ -52,7 +52,10 @@ def create_app():
 	@app.route('/user/<int:id>', methods=['PUT'])
 	def update_user(id):
 		if id in users:
-			request.json
+			update_user = request.json
+			users[id] = update_user
+			users[id]['id'] = id
+			return jsonify(users)	
 		else:
 			return ('', 404)
 	return app
